@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif, "Khmer OS Battambang";
+        background-color: #f0f0f0;
+    }
+
+    .grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    input[type="text"], select {
+        width: 200px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    input[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+    #electircity, #water, #total {
+        font-weight: bold;
+        color: #4CAF50;
+    }
+</style>
+<body>
+    <div class="grid">
+        <header>
+            <h1>កម្មវិធីគ្រប់គ្រងថ្លៃទឹកភ្លើងបន្ទប់ជួល</h1>
+        </header>
+        <aside class="sidebar-left">Left Sidebar</aside>
+        <article>
+            <table>
+                <tr>
+                    <td>
+                        <label for="room">លេខបន្ទប់ឬឈ្មោះ :</label>
+                    </td>
+                    <td>
+                        <select id="room" required="required">
+                            <option value="" readonly>ជ្រើសរើសបន្ទប់..</option>
+                            <option value="1">A01</option>
+                            <option value="2">A02</option>
+                            <option value="3">A03</option>
+                            <option value="4">A04</option>
+                            <option value="5">A05</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="electircity">
+                    <td align="right">អគ្គិសនី</td>
+                </tr>
+                <tr>
+                    <td><label for="electricity">លេខចាស់ :</label></td>
+                    <td><input type="text" id="oldNum" placeholder="តួលេខចាស់">kwh</td>
+                </tr>
+                <tr>
+                    <td for="electricity"><label>លេខថ្មី :</label></td>
+                    <td><input type="text" id="newNum" placeholder="តួលេខថ្មី">kwh</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="គណនា" onClick="calculate()">
+                        <input type="button" value="សំអាត" onClick="clearElectricity()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="electricity">ចំនួនប្រើប្រាស់ :</label></td>
+                    <td><input type="text" id="used">kwh</td>
+                </tr>
+                <tr>
+                    <td><label for="electricity">ចំណាយ :</label></td>
+                    <td><input type="text" id="paid">រៀល</td>
+                </tr>
+                <tr id="water">
+                    <td align="right">ទឹក</td>
+                </tr>
+                <tr>
+                    <td><label for="water">លេខចាស់ :</label></td>
+                    <td><input type="text" id="oldWater" placeholder="តួលេខចាស់">m³</td>
+                </tr>
+                <tr>
+                    <td for="water"><label>លេខថ្មី :</label></td>
+                    <td><input type="text" id="newWater" placeholder="តួលេខថ្មី">m³</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="គណនា" onClick="calculate()">
+                        <input type="button" value="សំអាត" onClick="clearWater()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="water">ចំនួនប្រើប្រាស់ :</label></td>
+                    <td><input type="text" id="waterUsed">m³</td>
+                </tr>
+                <tr>
+                    <td><label for="water">ចំណាយ :</label></td>
+                    <td><input type="text" id="waterPaid">រៀល</td>
+                </tr>
+                <tr id="total">
+                    <td align="right">សរុប</td>
+                </tr>
+                <tr>
+                    <td><label for="total">សរុបចំណាយ :</label></td>
+                    <td><input type="text" id="totalPaid">រៀល</td>
+                </tr>
+            </table>
+        </article>
+        <footer><h1>Footer</h1></footer>
+    </div>
+    <script>
+        function validate(){
+            var select = document.getElementById("room").value;
+            // value is set to a valid option, so submit form
+            if(select.value){
+                return true;
+            }
+            return false;
+        }
+        function calculate() {
+            var oldNum = document.getElementById("oldNum").value;
+            var newNum = document.getElementById("newNum").value;
+            var used = "";
+            var paid = "";
+
+            used = newNum - oldNum;
+            if (used < 50) { paid = used * 600; }
+            else if (used < 100) { paid = used * 700; }
+            else if (used < 200) { paid = used * 800; }
+            else { paid = used * 1000; }
+            document.getElementById("used").value = used;
+            document.getElementById("paid").value = new Intl.NumberFormat().format(paid);
+
+            var oldWater = document.getElementById("oldWater").value;
+            var newWater = document.getElementById("newWater").value;
+            var waterUsed = "";
+            var waterPaid = "";
+
+            waterUsed = newWater - oldWater;
+            waterPaid = waterUsed * 1600;
+            document.getElementById("waterUsed").value = waterUsed;
+            document.getElementById("waterPaid").value = new Intl.NumberFormat().format(waterPaid);
+
+            var totalPaid = "";
+            totalPaid = paid + waterPaid;
+            document.getElementById("totalPaid").value = new Intl.NumberFormat().format(totalPaid);
+        }
+        function clearElectricity() {
+            document.getElementById("room").value = "--ជ្រើសរើសបន្ទប់--";
+            document.getElementById("oldNum").value = "";
+            document.getElementById("newNum").value = "";
+            document.getElementById("used").value = "?";
+            document.getElementById("paid").value = "?";
+            document.getElementById("totalPaid").value = "?";
+
+        }
+        function clearWater(){
+            document.getElementById("room").value = "--ជ្រើសរើសបន្ទប់--";
+            document.getElementById("oldNum").value = "";
+            document.getElementById("newNum").value = "";
+            document.getElementById("waterUsed").value = "?";
+            document.getElementById("waterPaid").value = "?";
+            document.getElementById("totalPaid").value = "?";
+        }
+    </script>
+</body>
+
+</html>

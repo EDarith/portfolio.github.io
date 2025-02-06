@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Navbar</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="app.js" defer></script>
+</head>
+<body>
+    <nav id="sidebar">
+        <ul>
+            <li>
+                <span class="logo">Portfolio</span>
+                <button type="button" onclick=toggleSidebar() id="toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/keyboard_double_arrow_left.svg"></image>
+                    </svg>
+                </button>
+            </li>
+            <li class="active">
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/home.svg"></image>
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/dashboard.svg"></image>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <button class="dropdown-btn" onclick=toggleSubMenu(this)>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/create_new_folder.svg">
+                    </svg>
+                    <span>Create</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/keyboard_arrow_down.svg"></image>
+                    </svg>
+                </button>
+                <ul class="sub-menu">
+                    <div>
+                        <li>
+                            <a href="#">Folder</a>
+                        </li>
+                        <li>
+                            <a href="#">Document</a>
+                        </li>
+                        <li>
+                            <a href="#">Project</a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <button class="dropdown-btn" onclick=toggleSubMenu(this)>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/checklist.svg">
+                    </svg>
+                    <span>Todo-lists</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/keyboard_arrow_down.svg"></image>
+                    </svg>
+                </button>
+                <ul class="sub-menu">
+                    <div>
+                        <li><a href="#">Work</a></li>
+                        <li><a href="#">Private</a></li>
+                        <li><a href="#">Coding</a></li>
+                        <li><a href="#">Gardening</a></li>
+                        <li><a href="#">School</a></li>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="calendar.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/calendar_month.svg">
+                    </svg>
+                    <span>Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24">
+                        <image href="./icons/person.svg"></image>
+                    </svg>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Dashboard</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, deserunt vitae fugiat voluptate voluptates qui voluptatem sunt cupiditate. Quia optio est facere voluptatibus saepe maiores pariatur, sint accusamus nobis? Aut!</p>
+        </div>
+        <div class="container">
+            <h2>Product</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, deserunt vitae fugiat voluptate voluptates qui voluptatem sunt cupiditate. Quia optio est facere voluptatibus saepe maiores pariatur, sint accusamus nobis? Aut!</p>
+        </div>
+        <div class="container">
+            <h2>Lorem Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, deserunt vitae fugiat voluptate voluptates qui voluptatem sunt cupiditate. Quia optio est facere voluptatibus saepe maiores pariatur, sint accusamus nobis? Aut!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam ea eos, molestiae, omnis suscipit ipsam facere corporis repellat, eum laboriosam ducimus aut laudantium enim labore? Deleniti assumenda distinctio doloribus tempora.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet praesentium id, deleniti quasi soluta esse accusantium excepturi dolore fugiat. Tempore iste suscipit accusantium nemo asperiores quae mollitia corporis odio deleniti.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, sed nostrum minima consectetur labore adipisci accusamus voluptates praesentium itaque illum impedit voluptatum autem tempora, maiores natus nisi illo! Unde, nobis?
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic ea quibusdam odio eius aliquid! Est itaque voluptatum fugit inventore, provident voluptate modi aperiam quod enim non placeat minus ad architecto!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid quam minima architecto commodi deleniti nobis velit recusandae? Omnis quos fugit nesciunt possimus aut, molestias expedita commodi consectetur distinctio ratione adipisci?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda deserunt nobis aut, tempore, sapiente cum quibusdam magnam quae voluptatibus, nisi eaque vel possimus. Iure a ab reiciendis placeat modi perspiciatis?
+            </p>
+        </div>
+    </main>
+</body>
+</html>

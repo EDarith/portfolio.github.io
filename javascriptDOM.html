@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>practice DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            ;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        .button3 {
+            background-color: #f44336;
+        }
+
+        .button5 {
+            background-color: #00e5ac;
+        }
+
+        .contain-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .btn-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .fire {
+            background: url(fire.gif);
+            font-size: 3rem;
+            text-align: center;
+            vertical-align: center;
+            font-family:fantasy;
+            font-stretch: ultra-expanded;
+            background-size: cover;
+            background-position: center;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        .container{
+		width:100%;
+		height: 100vh;
+		background:#000000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+	.container img{
+		width: 90%;
+        object-fit: fill;
+	}
+	.container h1{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+		color: #fff;
+		font-size: 90px;
+		font-weight: 600;
+		letter-spacing: 3px;
+	}
+	.quotes{
+		width: 100%;
+		position: absolute;
+		text-align: center;
+		bottom: 15%;
+		color: #fff;
+		font-size: 20px;
+		font-weight: 500px;
+	}
+	.quotes h2{
+		font-size: 45px;
+		margin-top: 10px;
+		font-weight: 500;
+	}
+    </style>
+</head>
+
+<body onLoad="display()">
+    <div>
+        <h1 class="fire">JavaScript Document Object Model Practice</h1>
+    </div>
+    <div class="container">
+		<img src="https://images3.alphacoders.com/103/1031584.jpg">
+		<h1 id="current-time"> </h1>
+		<div class="quotes">
+			<p>work hard study hard</p>
+			<h2>Dream Big</h2>
+		</div>
+	</div>
+    <div class="contain-btn">
+        <input type="button" class="button button5" value="Sort ID A-Z" onClick="sortByIdDesc()">
+        <input type="button" class="button button5" value="Search" onClick="search()">
+    </div>
+    <p id="display">Display...............</p>
+    <p class="btn-center">
+        <input type="button" class="button" value="Add New" onClick="myAdd()">
+        <input type="button" class="button button3" value="Close" onClick="myClose()">
+    </p>
+</body>
+
+</html>
+<script>
+    var arr = new Array("", "Coca", "Fanta", "Milk", "Water")
+
+    function display() {
+        var str = "<table border='1'";
+        str += "<tr><th>Index</th><th>Data</th><th>Modify/Delete</th></tr>";
+        for (var index = 1; index < arr.length; index++) {
+            str += "<tr>";
+            str += "<td>" + index + "</td><td>" + arr[index] + "</td>";
+            str += "<td><input type='button' class='button button5' value='Edite' onClick='myUpdate(" + index + ")'>/"
+            str += "<input type='button' class='button button5' value='Delete' onClick='myDelete(" + index + ")'></td>"
+            str += "</tr>";
+        }
+        str += "</table>";
+        document.getElementById("display").innerHTML = str;
+    }
+    //myAdd function
+    function myAdd() {
+        var data = prompt("Please enter product name:", " ");
+        arr.push(data);
+        display();
+    }
+    //myUpdate function
+    function myUpdate(b) {
+        var data = prompt("Please input product name:", arr[b]);
+        arr[b] = data;
+        display();
+    }
+    //myDelete function
+    function myDelete(a) {
+        var index = confirm("Are sure to Delete?");
+
+        arr.splice(a, 1);
+        display();
+    }
+
+    function myClose() {
+        window.close()
+    }
+    function sortTable() {
+        // Create a copy of array without the first empty element
+        var tempArr = arr.slice(1);
+
+        // Sort the temporary array alphabetically
+        tempArr.sort(function (a, b) {
+            // Handle null, undefined or empty values
+            if (!a) return 1;  // Move empty values to end
+            if (!b) return -1; // Move empty values to end
+
+            // Case-insensitive string comparison
+            return a.toString().toLowerCase().localeCompare(b.toString().toLowerCase());
+        });
+
+        // Reconstruct array with empty first element
+        arr = [""].concat(tempArr);
+        display();
+    }
+
+    function sortByIdAsc() {
+        // Keep original order based on index
+        display();
+    }
+
+    function sortByIdDesc() {
+        // Create a copy of array without the first empty element
+        var tempArr = arr.slice(1);
+        // Reverse the array
+        arr = [""].concat(tempArr.reverse());
+        display();
+    }
+    function search() {
+        var searchTerm = prompt("Enter search term:").toLowerCase();
+        var results = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].toLowerCase().includes(searchTerm)) {
+                results.push("Index " + i + ": " + arr[i]);
+            }
+        }
+
+        if (results.length > 0) {
+            alert("Found items:\n" + results.join("\n"));
+        } else {
+            alert("No items found");
+        }
+    }
+    let time = document.getElementById("current-time");
+		
+		setInterval(()=>{
+			let d = new Date();
+			time.innerHTML=d.toLocaleTimeString();
+		},1000)
+</script>
