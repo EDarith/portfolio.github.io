@@ -183,7 +183,7 @@ body {
 }
 
 .headline h1 {
-  font-size: 3.5em;
+  font-size: 2rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -223,7 +223,7 @@ body {
   font-size: 0.9em;
 }
 .skills-container {
-  max-width: 800px;
+  max-width: calc(100%-50px);
   margin: 0 auto;
   padding: 20px;
 }
@@ -247,7 +247,6 @@ body {
 }
 h1 {
   color: #3498db;
-  border-bottom: 3px solid #3498db;
   padding-bottom: 10px;
 }
 .hobbies {

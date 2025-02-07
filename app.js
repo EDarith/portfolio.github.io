@@ -61,7 +61,33 @@ document.addEventListener("click", function (event) {
 
   // Check if the click is outside the navbar and toggler button
   if (!navbar.contains(event.target) && !toggler.contains(event.target)) {
-      let bsCollapse = new bootstrap.Collapse(navbar, { toggle: false });
-      bsCollapse.hide();
+    let bsCollapse = new bootstrap.Collapse(navbar, { toggle: false });
+    bsCollapse.hide();
   }
+});
+
+// Toggle navbar collapse when clicking the toggler
+document.querySelector(".navbar-toggler").addEventListener("click", function () {
+  let navbar = document.getElementById("navbarNav");
+  let bsCollapse = new bootstrap.Collapse(navbar);
+  
+  if (navbar.classList.contains('show')) {
+    bsCollapse.hide();
+  } else {
+    bsCollapse.show();
+  }
+});
+
+// Collapse when user scrolls down on smartphone screen
+let lastScrollTop = 0;
+window.addEventListener("scroll", function () {
+  let navbar = document.getElementById("navbarNav");
+  let st = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (st > lastScrollTop && window.innerWidth < 768) {
+    // Scroll down
+    let bsCollapse = new bootstrap.Collapse(navbar, { toggle: false });
+    bsCollapse.hide();
+  }
+  lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 });
