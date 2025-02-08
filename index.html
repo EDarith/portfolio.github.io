@@ -35,6 +35,16 @@
             position: relative;
             z-index: 1;
         }
+        @media screen and (max-width: 430px) {
+            main{
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+            }
+        }
 
         footer {
             text-align: center;
@@ -87,18 +97,19 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="./index.html" data-page="home">My Portfolio</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span
+                        class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html" data-page="home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.html" data-page="profile">Profile</a>
+                        <li class="nav-item"><a class="nav-link" data-page="home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" data-page="profile">Profile</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="education.html" data-page="education">Education</a></li>
-                        <li class="nav-item"><a class="nav-link" href="experience.html" data-page="experience">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" href="skills.html" data-page="skills">Skills</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html" data-page="about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html" data-page="contact">Contact</a>
+                        <li class="nav-item"><a class="nav-link" data-page="education">Education</a></li>
+                        <li class="nav-item"><a class="nav-link" data-page="experience">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" data-page="skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" data-page="about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" data-page="contact">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="darkModeToggle">
@@ -134,7 +145,8 @@
                             <h1>Welcome to My Portfolio</h1>
                             <p>Hi, I'm E Ledarith. A passionate developer focused on creating amazing web experiences.
                             </p>
-                            <a href="about.html" class="btn btn-primary btn-lg" data-page="contact" target="_blank">Get in Touch</a>
+                            <a href="about.html" class="btn btn-primary btn-lg" data-page="contact" target="_blank">Get
+                                in Touch</a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -190,7 +202,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Projects Section -->
             <div class="profile-section p-4 mb-4">
                 <h2 class="legend mb-4">Projects</h2>
@@ -215,7 +227,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Achievements Section -->
             <div class="profile-section p-4">
                 <h2 class="legend mb-4">Achievements</h2>
@@ -270,7 +282,7 @@
                 <h1>Education Background</h1>
                 <p>My academic journey and qualifications</p>
             </div>
-    
+
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="date">2020 - 2024</span>
@@ -278,14 +290,14 @@
                     <h4>University of Management and Economic</h4>
                     <p>Specialized in Computer Science with focus on web development and artificial intelligence.</p>
                 </div>
-    
+
                 <div class="timeline-item">
                     <span class="date">2016 - 2018</span>
                     <h3>Associate Degree in Information Technology</h3>
                     <h4>Royal University of Phnom Penh</h4>
                     <p>Fundamental studies in computer programming and system analysis.</p>
                 </div>
-    
+
                 <div class="timeline-item">
                     <span class="date">2011 - 2016</span>
                     <h3>High School Diploma</h3>
@@ -349,7 +361,8 @@
                 <ul>
                     <li>Install, maintain, and repair CCTV systems, including cameras, DVRs, monitors, and associated
                         cabling and hardware</li>
-                    <li>Perform site surveys to determine optimal camera placement and ensure coverage of critical areas for
+                    <li>Perform site surveys to determine optimal camera placement and ensure coverage of critical areas
+                        for
                         surveillance.</li>
                     <li>Configure and program CCTV systems for recording, including setting up motion detection and
                         scheduling recording times.
@@ -365,7 +378,7 @@
         </div>
         <div class="skills-container">
             <h1>My Skills</h1>
-    
+
             <div class="skill-section">
                 <h2>Technical Skills</h2>
                 <div class="skill-list">
@@ -387,7 +400,7 @@
                     <div class="skill-item">AI</div>
                 </div>
             </div>
-    
+
             <div class="skill-section">
                 <h2>Database & Tools</h2>
                 <div class="skill-list">
@@ -399,7 +412,7 @@
                     <div class="skill-item">Linux</div>
                 </div>
             </div>
-    
+
             <div class="skill-section">
                 <h2>Soft Skills</h2>
                 <div class="skill-list">
@@ -421,27 +434,31 @@
         <div class="container">
             <div>
                 <h1>About Me</h1>
-                <p>Hello! I'm a passionate individual who enjoys exploring various interests and activities. Here are some of my favorite hobbies:</p>
-                
+                <p>Hello! I'm a passionate individual who enjoys exploring various interests and activities. Here are
+                    some of my favorite hobbies:</p>
+
                 <div class="hobbies">
                     <div class="hobby-card">
                         <h3>💻 Coding</h3>
-                        <p>I love creating and building software solutions. Programming is both my profession and passion.</p>
+                        <p>I love creating and building software solutions. Programming is both my profession and
+                            passion.</p>
                     </div>
-                    
+
                     <div class="hobby-card">
                         <h3>📚 Reading</h3>
                         <p>I enjoy diving into books, especially technical literature and science fiction.</p>
                     </div>
-                    
+
                     <div class="hobby-card">
                         <h3>🎣 Fishing</h3>
-                        <p>Spending peaceful time by the water and catching fish is one of my favorite ways to relax.</p>
+                        <p>Spending peaceful time by the water and catching fish is one of my favorite ways to relax.
+                        </p>
                     </div>
-                    
+
                     <div class="hobby-card">
                         <h3>🚴 Riding</h3>
-                        <p>Whether it's cycling or motorcycling, I love the freedom of riding and exploring new places.</p>
+                        <p>Whether it's cycling or motorcycling, I love the freedom of riding and exploring new places.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -454,17 +471,17 @@
             <i class="bi bi-telegram"></i>
             <a href="tel:0965880169">096 588 0169</a>
         </div>
-    
+
         <div class="contact-item">
             <strong>Email:</strong>
             <a href="mailto:eledarith@gmail.com">eledarith@gmail.com</a>
         </div>
-    
+
         <div class="contact-item">
             <strong>Address:</strong>
             12000 Phnom Penh
         </div>
-    
+
         <div class="contact-item">
             <strong>Website:</strong>
             <a href="http://www.darith.com" target="_blank">www.darith.com</a>
@@ -485,7 +502,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    
+
     <script src="app.js"></script>
 </body>
 
