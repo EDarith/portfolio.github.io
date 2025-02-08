@@ -32,18 +32,22 @@
         background: white;
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-collapse: collapse;
     }
 
     td {
         padding: 10px;
     }
 
-    input[type="text"], select {
-        width: 200px;
+    input[type="text"],
+    select {
+        width: 100%;
+        max-width: 200px;
         padding: 8px;
         border: 1px solid #ddd;
         border-radius: 4px;
+        box-sizing: border-box;
     }
 
     input[type="button"] {
@@ -60,17 +64,81 @@
         background-color: #45a049;
     }
 
-    #electircity, #water, #total {
+    #electircity,
+    #water,
+    #total {
         font-weight: bold;
         color: #4CAF50;
     }
+
+    @media screen and (max-width: 600px) {
+        .grid {
+            padding: 10px;
+            margin: 0;
+        }
+
+        header {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        table {
+            padding: 10px;
+            margin: 0;
+        }
+
+        tr {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        td {
+            padding: 5px;
+            text-align: left !important;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        td[colspan="2"] {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        input[type="text"],
+        select {
+            max-width: 100%;
+            margin-bottom: 5px;
+        }
+
+        input[type="button"] {
+            width: 48%;
+            margin: 5px 0;
+            padding: 12px 0;
+            font-size: 0.9em;
+        }
+
+        #electircity, #water, #total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+    }
 </style>
+
 <body>
     <div class="grid">
         <header>
             <h1>កម្មវិធីគ្រប់គ្រងថ្លៃទឹកភ្លើងបន្ទប់ជួល</h1>
         </header>
-        <aside class="sidebar-left">Left Sidebar</aside>
+        <aside class="sidebar-left">
+        </aside>
         <article>
             <table>
                 <tr>
@@ -78,8 +146,8 @@
                         <label for="room">លេខបន្ទប់ឬឈ្មោះ :</label>
                     </td>
                     <td>
-                        <select id="room" required="required">
-                            <option value="" readonly>ជ្រើសរើសបន្ទប់..</option>
+                        <select id="room" required="required" onchange="validateRoom()">
+                            <option value="">ជ្រើសរើសបន្ទប់..</option>
                             <option value="1">A01</option>
                             <option value="2">A02</option>
                             <option value="3">A03</option>
@@ -93,11 +161,11 @@
                 </tr>
                 <tr>
                     <td><label for="electricity">លេខចាស់ :</label></td>
-                    <td><input type="text" id="oldNum" placeholder="តួលេខចាស់">kwh</td>
+                    <td><input type="text" id="oldNum" placeholder="តួលេខចាស់" disabled>kwh</td>
                 </tr>
                 <tr>
                     <td for="electricity"><label>លេខថ្មី :</label></td>
-                    <td><input type="text" id="newNum" placeholder="តួលេខថ្មី">kwh</td>
+                    <td><input type="text" id="newNum" placeholder="តួលេខថ្មី" disabled>kwh</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -107,22 +175,22 @@
                 </tr>
                 <tr>
                     <td><label for="electricity">ចំនួនប្រើប្រាស់ :</label></td>
-                    <td><input type="text" id="used">kwh</td>
+                    <td><input type="text" id="used" disabled>kwh</td>
                 </tr>
                 <tr>
                     <td><label for="electricity">ចំណាយ :</label></td>
-                    <td><input type="text" id="paid">រៀល</td>
+                    <td><input type="text" id="paid" disabled>រៀល</td>
                 </tr>
                 <tr id="water">
                     <td align="right">ទឹក</td>
                 </tr>
                 <tr>
                     <td><label for="water">លេខចាស់ :</label></td>
-                    <td><input type="text" id="oldWater" placeholder="តួលេខចាស់">m³</td>
+                    <td><input type="text" id="oldWater" placeholder="តួលេខចាស់" disabled>m³</td>
                 </tr>
                 <tr>
                     <td for="water"><label>លេខថ្មី :</label></td>
-                    <td><input type="text" id="newWater" placeholder="តួលេខថ្មី">m³</td>
+                    <td><input type="text" id="newWater" placeholder="តួលេខថ្មី" disabled>m³</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -132,76 +200,164 @@
                 </tr>
                 <tr>
                     <td><label for="water">ចំនួនប្រើប្រាស់ :</label></td>
-                    <td><input type="text" id="waterUsed">m³</td>
+                    <td><input type="text" id="waterUsed" disabled>m³</td>
                 </tr>
                 <tr>
                     <td><label for="water">ចំណាយ :</label></td>
-                    <td><input type="text" id="waterPaid">រៀល</td>
+                    <td><input type="text" id="waterPaid" disabled>រៀល</td>
                 </tr>
                 <tr id="total">
                     <td align="right">សរុប</td>
                 </tr>
                 <tr>
                     <td><label for="total">សរុបចំណាយ :</label></td>
-                    <td><input type="text" id="totalPaid">រៀល</td>
+                    <td><input type="text" id="totalPaid" disabled>រៀល</td>
                 </tr>
             </table>
         </article>
-        <footer><h1>Footer</h1></footer>
+        <footer></footer>
     </div>
     <script>
-        function validate(){
+        function validateRoom() {
             var select = document.getElementById("room").value;
-            // value is set to a valid option, so submit form
-            if(select.value){
+            var inputs = document.querySelectorAll('input[type="text"]');
+            
+            if (select !== "") {
+                inputs.forEach(input => {
+                    input.disabled = false;
+                });
                 return true;
+            } else {
+                inputs.forEach(input => {
+                    input.disabled = true;
+                    input.value = "";
+                });
+                return false;
             }
-            return false;
         }
-        function calculate() {
+
+        function checkRoomSelected(event) {
+            var select = document.getElementById("room").value;
+            if (select === "") {
+                alert("សូមជ្រើសរើសបន្ទប់មុននឹងបញ្ចូលទិន្នន័យ!");
+                event.target.blur();
+                return false;
+            }
+            return true;
+        }
+
+        // Add input field event listeners after page loads
+        window.onload = function() {
+            var inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('focus', checkRoomSelected);
+            });
+        };
+
+        // Modify existing validation functions
+        function validateInput(value, fieldName) {
+            if (!checkRoomSelected(event)) return false;
+            if (value === "") {
+                alert("សូមបញ្ចូល" + fieldName);
+                return false;
+            }
+            if (isNaN(value)) {
+                alert(fieldName + " ត្រូវតែជាលេខ");
+                return false;
+            }
+            if (value < 0) {
+                alert(fieldName + " មិនអាចតិចជាងសូន្យ");
+                return false;
+            }
+            return true;
+        }
+
+        function validateElectricity() {
+            if (!checkRoomSelected(event)) return false;
             var oldNum = document.getElementById("oldNum").value;
             var newNum = document.getElementById("newNum").value;
-            var used = "";
-            var paid = "";
 
-            used = newNum - oldNum;
+            if (!validateInput(oldNum, "លេខចាស់អគ្គិសនី")) return false;
+            if (!validateInput(newNum, "លេខថ្មីអគ្គិសនី")) return false;
+
+            if (Number(newNum) < Number(oldNum)) {
+                alert("លេខថ្មីអគ្គិសនីត្រូវតែធំជាងលេខចាស់");
+                return false;
+            }
+            return true;
+        }
+
+        function validateWater() {
+            if (!checkRoomSelected(event)) return false;
+            var oldWater = document.getElementById("oldWater").value;
+            var newWater = document.getElementById("newWater").value;
+
+            if (!validateInput(oldWater, "លេខចាស់ទឹក")) return false;
+            if (!validateInput(newWater, "លេខថ្មីទឹក")) return false;
+
+            if (Number(newWater) < Number(oldWater)) {
+                alert("លេខទឹកថ្មីត្រូវតែធំជាងលេខចាស់");
+                return false;
+            }
+            return true;
+        }
+
+        function calculateElectricity() {
+            if (!validateElectricity()) return 0;
+            
+            var oldNum = document.getElementById("oldNum").value;
+            var newNum = document.getElementById("newNum").value;
+            var used = newNum - oldNum;
+            var paid;
+
             if (used < 50) { paid = used * 600; }
             else if (used < 100) { paid = used * 700; }
             else if (used < 200) { paid = used * 800; }
             else { paid = used * 1000; }
+
             document.getElementById("used").value = used;
             document.getElementById("paid").value = new Intl.NumberFormat().format(paid);
+            return paid;
+        }
+
+        function calculateWater() {
+            if (!validateWater()) return 0;
 
             var oldWater = document.getElementById("oldWater").value;
             var newWater = document.getElementById("newWater").value;
-            var waterUsed = "";
-            var waterPaid = "";
+            var waterUsed = newWater - oldWater;
+            var waterPaid = waterUsed * 1600;
 
-            waterUsed = newWater - oldWater;
-            waterPaid = waterUsed * 1600;
             document.getElementById("waterUsed").value = waterUsed;
             document.getElementById("waterPaid").value = new Intl.NumberFormat().format(waterPaid);
+            return waterPaid;
+        }
 
-            var totalPaid = "";
-            totalPaid = paid + waterPaid;
+        function calculate() {
+            if (!checkRoomSelected(event)) return false;
+            var electricityPaid = calculateElectricity();
+            var waterPaid = calculateWater();
+            var totalPaid = electricityPaid + waterPaid;
             document.getElementById("totalPaid").value = new Intl.NumberFormat().format(totalPaid);
         }
+
         function clearElectricity() {
-            document.getElementById("room").value = "--ជ្រើសរើសបន្ទប់--";
+            document.getElementById("room").value = "";
             document.getElementById("oldNum").value = "";
             document.getElementById("newNum").value = "";
             document.getElementById("used").value = "?";
             document.getElementById("paid").value = "?";
             document.getElementById("totalPaid").value = "?";
-
+            validateRoom(); // Disable fields after clearing
         }
-        function clearWater(){
-            document.getElementById("room").value = "--ជ្រើសរើសបន្ទប់--";
-            document.getElementById("oldNum").value = "";
-            document.getElementById("newNum").value = "";
+        function clearWater() {
+            document.getElementById("room").value = "";
+            document.getElementById("oldWater").value = "";
+            document.getElementById("newWater").value = "";
             document.getElementById("waterUsed").value = "?";
             document.getElementById("waterPaid").value = "?";
             document.getElementById("totalPaid").value = "?";
+            validateRoom(); // Disable fields after clearing
         }
     </script>
 </body>

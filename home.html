@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,62 +8,503 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles.css"> 
-</head>
-<body>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Bootstrap Carousel -->
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./Images/IMG_9757.jpg" class="d-block w-100" alt="Slide 1">
-                <div class="carousel-caption">
-                    <h1>Welcome to My Portfolio</h1>
-                    <p>Hi, I'm E Ledarith. A passionate developer focused on creating amazing web experiences.</p>
-                    <a href="https://t.me/darithele" class="btn btn-primary btn-lg">Get in Touch</a>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            min-height: calc(100vh - 120px);
+            padding: 0 0.6em;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media screen and (max-width: 430px) {
+            main {
+                height: 100vh;
+                padding: 0;
+                margin: 0;
+                background: transparent;
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0d6efd;
+        }
+
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <header>
+
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html">My Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span
+                        class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+                        <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="darkModeToggle">
+                                <button id="toggle-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                    </svg>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="./Images/IMG_9725.jpg" class="d-block w-100" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="./Images/IMG_1927.JPG" class="d-block w-100" alt="Slide 3">
-            </div>
-            <div class="carousel-item">
-                <img src="./Images/IMG_1919.JPG" class="d-block w-100" alt="Slide 4">
-            </div>
-            <div class="carousel-item">
-                <img src="./Images/IMG_1898.JPG" class="d-block w-100" alt="Slide 5">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+        </nav>
+    </header>
 
-    <div class="container text-center py-5">
-        <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/darith-ele-29299214b"><i class="fab fa-linkedin"></i></a>
-            <a href="https://t.me/darithele"><i class="fab fa-telegram"></i></a>
-            <a href="https://web.facebook.com/da.rith.3114"><i class="fab fa-facebook"></i></a>
+    <main>
+        <section id="content">
+            <!-- Main content goes here -->
+            <!-- Bootstrap Carousel -->
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./Images/IMG_9757.jpg" class="d-block w-100" alt="Slide 1">
+                        <div class="carousel-caption">
+                            <h1>Welcome to My Portfolio</h1>
+                            <p>Hi, I'm E Ledarith. A passionate developer focused on creating amazing web experiences.
+                            </p>
+                            <a href="about.html" class="btn btn-primary btn-lg" data-page="contact" target="_blank">Get
+                                in Touch</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/IMG_9725.jpg" class="d-block w-100" alt="Slide 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/IMG_1927.JPG" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/IMG_1919.JPG" class="d-block w-100" alt="Slide 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./Images/IMG_1898.JPG" class="d-block w-100" alt="Slide 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <div class="container text-center py-5">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/darith-ele-29299214b"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://t.me/darithele"><i class="fab fa-telegram"></i></a>
+                    <a href="https://web.facebook.com/da.rith.3114"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </section>
+        <div class="container py-5">
+            <!-- Profile Header -->
+            <div class="profile-section p-4 mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <svg class="rounded-circle bg-primary p-2" width="150" height="150">
+                            <foreignObject width="140" height="140">
+                                <image src="./Images/eledarith.jpg" alt="Avatar"
+                                    style="width: 100%; height: 117%; object-fit: cover; border-radius: 50%;">
+                            </foreignObject>
+                        </svg>
+                    </div>
+                    <div class="col-md-9">
+                        <h1>E Ledarith</h1>
+                        <p class="lead">Full Stack Developer</p>
+                        <div class="d-flex gap-3">
+                            <i class="bi bi-github"></i>
+                            <i class="bi bi-linkedin"></i>
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="profile-section p-4 mb-4">
+                <h2 class="legend mb-4">Projects</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <div class="card-body">
+                                <h5 class="card-title">Hotel Management</h5>
+                                <p class="card-text">Built a full-stack Hotel platform using PHP.</p>
+                                <i class="bi bi-github"></i> View Project
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <div class="card-body">
+                                <h5 class="card-title">Portfolio Website</h5>
+                                <p class="card-text">Designed and developed a responsive portfolio website.</p>
+                                <i class="bi bi-github"></i> View Project
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="profile-section p-4">
+                <h2 class="legend mb-4">Achievements</h2>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="bi bi-trophy-fill text-warning fs-1"></i>
+                        <h5 class="mt-2">Best Developer 2024</h5>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../fortune.html">
+                            <i class="bi bi-award-fill text-success fs-1"></i>
+                            <h5 class="mt-2">ទស្សទាយឈ្មោះ</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../fortune.html">
+                            <a href="../responsive_sidebar/index.html">
+                                <i class="bi bi-award-fill text-success fs-1"></i>
+                                <h5 class="mt-2">Responsive Sidebar Project</h5>
+                            </a>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../to-do-list.html">
+                            <i class="bi bi-star-fill text-primary fs-1"></i>
+                            <h5 class="mt-2">To-do List</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../calculator.html">
+                            <i class="bi bi-star-fill text-primary fs-1"></i>
+                            <h5 class="mt-2">Calculator</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../javascriptDOM.html">
+                            <i class="bi bi-star-fill text-primary fs-1"></i>
+                            <h5 class="mt-2">JavaScript DOM</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a href="../utility.html">
+                            <i class="bi bi-star-fill text-primary fs-1"></i>
+                            <h5 class="mt-2">utility Calculator</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
+        <div class="container">
+            <div class="education-header">
+                <h1>Education Background</h1>
+                <p>My academic journey and qualifications</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">2020 - 2024</span>
+                    <h3>Bachelor of Computer Science</h3>
+                    <h4>University of Management and Economic</h4>
+                    <p>Specialized in Computer Science with focus on web development and artificial intelligence.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="date">2016 - 2018</span>
+                    <h3>Associate Degree in Information Technology</h3>
+                    <h4>Royal University of Phnom Penh</h4>
+                    <p>Fundamental studies in computer programming and system analysis.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="date">2011 - 2016</span>
+                    <h3>High School Diploma</h3>
+                    <h4>Hun Sen Krong Tepnimit Pailin High School.</h4>
+                    <p>Extra courses in English and Computer.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="headline">
+                <h1>Work Experience</h1>
+            </div>
+            <div class="experience">
+                <h2>The Heritage Officers in Preservation(State)</h2>
+                <p><strong>Duration:</strong> January 2020 - December 2024</p>
+                <p><strong>Location:</strong> The Department of Culture and Fine Arts Pailin</p>
+                <p><strong>Responsibilities:</strong></p>
+                <ul>
+                    <li>Preserve and execute comprehensive conserving strategies
+                        and campaigns that align with the department's goals and
+                        objectives.</li>
+                    <li>Prepare and maintain inventory. Reports are issued monthly,
+                        quarterly, semesterly, and yearly.</li>
+                    <li>Work alongside provincial departments to enforcement
+                        policies and protect cultural heritage.</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">Time Management</span>
+                    <span class="skill-tag">Computer Skill</span>
+                    <span class="skill-tag">Administration Documents</span>
+                    <span class="skill-tag">Communication Skill</span>
+                </div>
+            </div>
+            <div class="experience">
+                <h2>Staff in the shipping department(Taiwan Company)</h2>
+                <p><strong>Duration:</strong> June 2019 - December 2020</p>
+                <p><strong>Location:</strong> Pontus Footwear Ltd, Street.3 Takeo</p>
+                <p><strong>Responsibilities:</strong></p>
+                <ul>
+                    <li>Manage shipments for a single brand to the US and the EU.</li>
+                    <li>Keep the client informed at every stage of the process.</li>
+                    <li>Keep an eye on the timely delivery of materials and shoe
+                        packing during production and cut stock.
+                    </li>
+                    <li>Ensure the efficient tracking of resources from the entry point
+                        to the endpoint of the cargo by creating and managing it.</li>
+                    <li>Do the monthly report, give it to the director.</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">Work with Foreigner</span>
+                    <span class="skill-tag">Follow the SOP</span>
+                    <span class="skill-tag">Teamwork and Responsibilities</span>
+                    <span class="skill-tag">Handle Documents pass to Customs</span>
+                </div>
+            </div>
+            <div class="experience">
+                <h2>Staff in Camera Security Installer and Maintaining</h2>
+                <p><strong>Duration:</strong> May 2017 - July 2018</p>
+                <p><strong>Location:</strong> Private DCC Small Company</p>
+                <p><strong>Responsibilities:</strong></p>
+                <ul>
+                    <li>Install, maintain, and repair CCTV systems, including cameras, DVRs, monitors, and associated
+                        cabling and hardware</li>
+                    <li>Perform site surveys to determine optimal camera placement and ensure coverage of critical areas
+                        for
+                        surveillance.</li>
+                    <li>Configure and program CCTV systems for recording, including setting up motion detection and
+                        scheduling recording times.
+                    </li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">Independent and Teamwork</span>
+                    <span class="skill-tag">Overtime to Completed Task</span>
+                    <span class="skill-tag">Hard Working and Smart Working</span>
+                    <span class="skill-tag">Honesty</span>
+                </div>
+            </div>
+        </div>
+        <div class="skills-container">
+            <h1>My Skills</h1>
+
+            <div class="skill-section">
+                <h2>Technical Skills</h2>
+                <div class="skill-list">
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">MERN Stack</div>
+                    <div class="skill-item">Bootstrap</div>
+                    <div class="skill-item">jQuery</div>
+                    <div class="skill-item">PHP</div>
+                    <div class="skill-item">C/C++</div>
+                    <div class="skill-item">C#</div>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">ASP.NET</div>
+                    <div class="skill-item">ASP.NET Core</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">MIS</div>
+                    <div class="skill-item">ISAD</div>
+                    <div class="skill-item">AI</div>
+                </div>
+            </div>
+
+            <div class="skill-section">
+                <h2>Database & Tools</h2>
+                <div class="skill-list">
+                    <div class="skill-item">MySQL</div>
+                    <div class="skill-item">SQL Server</div>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">Network</div>
+                    <div class="skill-item">Linux</div>
+                </div>
+            </div>
+
+            <div class="skill-section">
+                <h2>Soft Skills</h2>
+                <div class="skill-list">
+                    <div class="skill-item">Be Patience</div>
+                    <div class="skill-item">Be Honesty</div>
+                    <div class="skill-item">Study Hard</div>
+                    <div class="skill-item">Work Hard</div>
+                    <div class="skill-item">Teamwork</div>
+                    <div class="skill-item">Independent Working</div>
+                    <div class="skill-item">Time Management</div>
+                    <div class="skill-item">Computer Proficiency</div>
+                    <div class="skill-item">Effective Communication</div>
+                    <div class="skill-item">Critical Thinking</div>
+                    <div class="skill-item">English Good</div>
+                    <div class="skill-item">Long Term Goal To Work</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h1>About Me</h1>
+                <p>Hello! I'm a passionate individual who enjoys exploring various interests and activities. Here are
+                    some of my favorite hobbies:</p>
+
+                <div class="hobbies">
+                    <div class="hobby-card">
+                        <h3>💻 Coding</h3>
+                        <p>I love creating and building software solutions. Programming is both my profession and
+                            passion.</p>
+                    </div>
+
+                    <div class="hobby-card">
+                        <h3>📚 Reading</h3>
+                        <p>I enjoy diving into books, especially technical literature and science fiction.</p>
+                    </div>
+
+                    <div class="hobby-card">
+                        <h3>🎣 Fishing</h3>
+                        <p>Spending peaceful time by the water and catching fish is one of my favorite ways to relax.
+                        </p>
+                    </div>
+
+                    <div class="hobby-card">
+                        <h3>🚴 Riding</h3>
+                        <p>Whether it's cycling or motorcycling, I love the freedom of riding and exploring new places.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1 class="contact-info">Contact Information</h1>
+        </div>
+        <div class="contact-item">
+            <strong>Phone/Telegram:</strong>
+            <i class="bi bi-telegram"></i>
+            <a href="tel:0965880169">096 588 0169</a>
+        </div>
+
+        <div class="contact-item">
+            <strong>Email:</strong>
+            <a href="mailto:eledarith@gmail.com">eledarith@gmail.com</a>
+        </div>
+
+        <div class="contact-item">
+            <strong>Address:</strong>
+            12000 Phnom Penh
+        </div>
+
+        <div class="contact-item">
+            <strong>Website:</strong>
+            <a href="http://www.darith.com" target="_blank">www.darith.com</a>
+        </div>
+        <div class="container text-center py-5">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/darith-ele-29299214b"><i class="fab fa-linkedin"></i></a>
+                <a href="https://t.me/darithele"><i class="fab fa-telegram"></i></a>
+                <a href="https://web.facebook.com/da.rith.3114"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="../app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <script src="app.js"></script>
 </body>
+
 </html>
