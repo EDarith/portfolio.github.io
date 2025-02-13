@@ -155,16 +155,19 @@ main p{
         padding: 0;
     }
     #sidebar{
-        height: 60px;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        height: 70px;
         width: 100%;
         border-right: none;
         border-top: 1px solid var(--line-clr);
         padding: 0;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        justify-content:flex-start;
+        overflow-x: auto;
         position: fixed;
-        bottom: 0;
+        top: 93%;
         left: 0;
         > ul{
             padding: 0;
