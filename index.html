@@ -36,9 +36,9 @@
             z-index: 1;
         }
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 430px) and (max-width: 768px) {
             main {
-                height: 100vh;
+                width: 100%;
                 padding: 0;
                 margin: 0;
                 background: transparent;
@@ -46,7 +46,20 @@
                 z-index: 1;
             }
         }
+        @media  screen and (max-width: 1380px) {
+            .card {
+                /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
+                width: clamp(100px, 50vw, 500px);
+                display: block;
+                max-height: fit-content;
+                transition: box-shadow 0.3s ease;
+                margin: 1rem;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+                transition: all;
+                width: 100%;
+            }
 
+        }
         footer {
             text-align: center;
             padding: 1rem;
@@ -103,7 +116,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="active"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
@@ -146,7 +159,8 @@
                             <h1>Welcome to My Portfolio</h1>
                             <p>Hi, I'm E Ledarith. A passionate developer focused on creating amazing web experiences.
                             </p>
-                            <a href="contact.html" class="btn btn-primary btn-lg" data-page="contact" target="_blank">Get
+                            <a href="contact.html" class="btn btn-primary btn-lg" data-page="contact"
+                                target="_blank">Get
                                 in Touch</a>
                         </div>
                     </div>
@@ -209,19 +223,21 @@
                 <h2 class="legend mb-4">Projects</h2>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <div>
+                        <div class="card">
+                            <img src="./Images/hotel_management_system.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Hotel Management</h5>
+                                <h5 class="card-title">Hotel Management Web Apps</h5>
                                 <p class="card-text">Built a full-stack Hotel platform using PHP.</p>
                                 <i class="bi bi-github"></i> View Project
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <div>
+                        <div class="card">
+                            <img src="./Images/inventory.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Portfolio Website</h5>
-                                <p class="card-text">Designed and developed a responsive portfolio website.</p>
+                                <h5 class="card-title">Inventory Management Application</h5>
+                                <p class="card-text">Developed a desktop inventory application using c#</p>
                                 <i class="bi bi-github"></i> View Project
                             </div>
                         </div>
@@ -286,7 +302,7 @@
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <span class="date">2020 - 2024</span>
+                    <span class="date">2021 - 2024</span>
                     <h3>Bachelor of Computer Science</h3>
                     <h4>University of Management and Economic</h4>
                     <p>Specialized in Computer Science with focus on web development and artificial intelligence.</p>
@@ -312,18 +328,18 @@
                 <h1>Work Experience</h1>
             </div>
             <div class="experience">
-                <h2>The Heritage Officers in Preservation(State)</h2>
+                <h2>Administration Assistant officer</h2>
                 <p><strong>Duration:</strong> January 2020 - December 2024</p>
                 <p><strong>Location:</strong> The Department of Culture and Fine Arts Pailin</p>
                 <p><strong>Responsibilities:</strong></p>
                 <ul>
-                    <li>Preserve and execute comprehensive conserving strategies
-                        and campaigns that align with the department's goals and
+                    <li>Help pass documents
+                        and keeping that align with the department's goals and
                         objectives.</li>
-                    <li>Prepare and maintain inventory. Reports are issued monthly,
+                    <li>Managed the day-to-day operations of a busy office, including organizing and filing, and other
+                        administrative duties Reports are issued monthly,
                         quarterly, semesterly, and yearly.</li>
-                    <li>Work alongside provincial departments to enforcement
-                        policies and protect cultural heritage.</li>
+                    <li>Maintained records of all office activities.</li>
                 </ul>
                 <div class="skills">
                     <span class="skill-tag">Time Management</span>
@@ -333,7 +349,7 @@
                 </div>
             </div>
             <div class="experience">
-                <h2>Staff in the shipping department(Taiwan Company)</h2>
+                <h2>Staff in the shipping department(Taiwan Factory)</h2>
                 <p><strong>Duration:</strong> June 2019 - December 2020</p>
                 <p><strong>Location:</strong> Pontus Footwear Ltd, Street.3 Takeo</p>
                 <p><strong>Responsibilities:</strong></p>
@@ -503,7 +519,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="app.js"></script>
+    <script type="text/javascript" src="app.js" defer></script>
+    <script type="text/javascript"  src="async.js"></script>
 </body>
 
 </html>

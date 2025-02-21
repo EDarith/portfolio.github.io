@@ -5,77 +5,87 @@
 }
 /* Default (Light Mode) */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --btn-bg: #e0e0e0;
-    --btn-text: #000000;
-  }
-  
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  button {
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    border: none;
-    padding: 0 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  /* Dark Mode Styles */
-  .dark-mode {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --btn-bg: #333333;
-    --btn-text: #ffffff;
-  }
-  /* navbar */
-  .dark-mode {
-    background-color: #333 !important;
-    color: #fff !important;
-  }
-
-  .dark-mode .nav-link {
-      color: #fff !important;
-  }
-
-  .dark-mode .navbar-brand {
-      color: #fff !important;
-  }
-  .dark-mode #toggle-btn svg {
-    stroke: #fff;
-  }
-  .social-links a {
-    font-size: 24px;
-    margin: 0 10px;
-    color: #333; /* Default dark color for light mode */
-    transition: color 0.3s ease;
-  }
-
-  .dark-mode .social-links a {
-      color: #fff !important; /* Light color when in dark mode */
-  } 
-  /* navbar text change*/
-  /* Default Light Mode Styles */
-  .navbar {
-    transition: background-color 0.3s ease, color 0.3s ease;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --btn-bg: #e0e0e0;
+  --btn-text: #000000;
 }
 
-.nav-link, .navbar-brand {
-    color: #000; /* Default dark text */
-    transition: color 0.3s ease;
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+button {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 /* Dark Mode Styles */
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --btn-bg: #333333;
+  --btn-text: #ffffff;
+}
+/* navbar */
+.dark-mode {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+.dark-mode .nav-link {
+  color: #fff !important;
+}
+
+.dark-mode .navbar-brand {
+  color: #fff !important;
+}
+.dark-mode #toggle-btn svg {
+  stroke: #fff;
+}
+.social-links a {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #333; /* Default dark color for light mode */
+  transition: color 0.3s ease;
+}
+
+.dark-mode .social-links a {
+  color: #fff !important; /* Light color when in dark mode */
+}
+/* navbar text change*/
+/* Default Light Mode Styles */
+.navbar {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Default dark text */
+.nav-link,
+.navbar-brand {
+  color: #000; 
+  transition: color 0.3s ease;
+}
+#navbarNav ul li.active a {
+  color: #0d6efd;
+  font-weight: 500;
+}
+/* Dark Mode active */
+.dark-mode #navbarNav ul li.active a {
+  color: #0d6efd !important;
+  font-weight: 500;
+}
+/* Dark Mode Styles */
 .dark-mode .navbar {
-    background-color: #333 !important;  /* Dark background */
+  background-color: #333 !important;
 }
 /* Dark Mode Toggler Icon (White) */
 .dark-mode .navbar-toggler-icon {
@@ -90,7 +100,7 @@
 }
 
 .carousel-item img {
-  object-fit:cover;
+  object-fit: cover;
   height: 100%;
   width: 100%;
 }
@@ -119,6 +129,26 @@
   padding-left: 1rem;
 }
 
+.card {
+  width: clamp(100px, 50vw, 500px); /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
+  max-height: fit-content;
+  transition: box-shadow 0.3s ease;
+  margin: 1rem;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  transition: all;
+}
+/*Text Light color when in dark mode */
+.dark-mode .card {
+  color: white !important;
+  background-color: var(--accent-clr); 
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.card-img-top:hover {
+  transform: scale(1.05);
+  border-radius: 0.8rem;
+}
 .education-header {
   text-align: center;
   margin-bottom: 50px;
@@ -139,7 +169,7 @@
   padding: 20px 30px;
   border-radius: 10px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -275,4 +305,58 @@ h1 {
   color: #0088cc;
   font-size: 1.2em;
   margin-right: 5px;
+}
+/* Loading indicator */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--accent-clr), transparent);
+    animation: loading 1s infinite;
+    z-index: 9999;
+    display: none;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Show loading when active */
+.loading.active {
+    display: block;
+}
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.error-container h1 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.error-details {
+    color: #6c757d;
+    margin: 1rem 0;
+}
+
+.home-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: var(--secondary-color);
 }
