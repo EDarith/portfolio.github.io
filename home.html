@@ -14,93 +14,6 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        main {
-            min-height: calc(100vh - 120px);
-            padding: 0 0.6em;
-            background: transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media screen and (max-width: 430px) {
-            main {
-                width: 100%;
-                padding: 0;
-                margin: 0;
-                background: transparent;
-                position: relative;
-                z-index: 1;
-            }
-
-            footer {
-                text-align: center;
-                position: relative;
-            }
-        }
-        @media  screen and (max-width: 1380px) {
-            .card {
-                /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
-                width: clamp(100px, 50vw, 500px);
-                display: block;
-                max-height: fit-content;
-                transition: box-shadow 0.3s ease;
-                margin: 1rem;
-                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-                transition: all;
-                width: 100%;
-            }
-
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .carousel-item {
-            height: 500px;
-        }
-
-        .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #0d6efd;
-        }
-
-        #matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
-        }
-    </style>
 </head>
 
 <body>
@@ -116,7 +29,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="active"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="active"><a class="nav-link" href="home.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
@@ -140,7 +53,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="home">
         <section id="content">
             <!-- Main content goes here -->
             <!-- Bootstrap Carousel -->
@@ -194,7 +107,7 @@
                 </div>
             </div>
         </section>
-        <div class="container py-5">
+        <div class="container py-5" id="profile">
             <!-- Profile Header -->
             <div class="profile-section p-4 mb-4">
                 <div class="row align-items-center">
@@ -294,13 +207,17 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="education">
             <div class="education-header">
                 <h1>Education Background</h1>
                 <p>My academic journey and qualifications</p>
             </div>
 
             <div class="timeline">
+                <div class="img-card">
+                    <img src="./Images/network.jpg" class="img" alt="...">
+                    <img src="./Images/network1.jpg" class="img" alt="...">
+                </div>
                 <div class="timeline-item">
                     <span class="date">2020 - 2024</span>
                     <h3>Bachelor of Computer Science</h3>
@@ -323,11 +240,12 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div id="experience">
             <div class="headline">
                 <h1>Work Experience</h1>
             </div>
             <div class="experience">
+                <img src="./Images/culture.jpg" class="workplace" alt="...">
                 <h2>Administration Assistant officer</h2>
                 <p><strong>Duration:</strong> January 2020 - December 2024</p>
                 <p><strong>Location:</strong> The Department of Culture and Fine Arts Pailin</p>
@@ -349,6 +267,7 @@
                 </div>
             </div>
             <div class="experience">
+                <img src="./Images/factory.jpg" class="workplace" alt="...">
                 <h2>Staff in the shipping department(Taiwan Factory)</h2>
                 <p><strong>Duration:</strong> June 2019 - December 2020</p>
                 <p><strong>Location:</strong> Pontus Footwear Ltd, Street.3 Takeo</p>
@@ -370,6 +289,7 @@
                 </div>
             </div>
             <div class="experience">
+                <img src="./Images/camerasecurity.jpg" class="workplace" alt="...">
                 <h2>Staff in Camera Security Installer and Maintaining</h2>
                 <p><strong>Duration:</strong> May 2017 - July 2018</p>
                 <p><strong>Location:</strong> Private DCC Small Company</p>
@@ -392,7 +312,7 @@
                 </div>
             </div>
         </div>
-        <div class="skills-container">
+        <div class="skills-container" id="skills">
             <h1>My Skills</h1>
 
             <div class="skill-section">
@@ -447,7 +367,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="about">
             <div>
                 <h1>About Me</h1>
                 <p>Hello! I'm a passionate individual who enjoys exploring various interests and activities. Here are
@@ -479,7 +399,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div id="contact">
             <h1 class="contact-info">Contact Information</h1>
         </div>
         <div class="contact-item">

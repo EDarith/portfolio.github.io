@@ -102,3 +102,46 @@ function draw() {
 }
 
 setInterval(draw, 33);
+
+// Smooth scroll to profile section
+document.querySelector('a[href="profile.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#profile').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+// Smooth scroll to education section
+document.querySelector('a[href="education.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#education').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+// Smooth scroll to experience section
+document.querySelector('a[href="experience.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#experience').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+// Smooth scroll to skills section
+document.querySelector('a[href="skills.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#skills').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+// Smooth scroll to about section
+document.querySelector('a[href="about.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#about').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+// Smooth scroll to about section
+document.querySelector('a[href="contact.html"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#contact').scrollIntoView({
+    behavior: 'smooth'
+  });
+});

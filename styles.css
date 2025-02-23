@@ -28,6 +28,27 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  min-height: calc(100vh - 120px);
+  padding: 0 0.6em;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
 
 /* Dark Mode Styles */
 .dark-mode {
@@ -70,8 +91,9 @@ button {
 
 /* Default dark text */
 .nav-link,
+.navbar-nav,
 .navbar-brand {
-  color: #000; 
+  color: #000;
   transition: color 0.3s ease;
 }
 #navbarNav ul li.active a {
@@ -119,6 +141,13 @@ button {
 .social-links a:hover {
   color: #0d6efd;
 }
+#matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.2;
+}
 .profile-section {
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -130,7 +159,11 @@ button {
 }
 
 .card {
-  width: clamp(100px, 50vw, 500px); /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
+  width: clamp(
+    100px,
+    50vw,
+    500px
+  ); /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
   max-height: fit-content;
   transition: box-shadow 0.3s ease;
   margin: 1rem;
@@ -140,7 +173,7 @@ button {
 /*Text Light color when in dark mode */
 .dark-mode .card {
   color: white !important;
-  background-color: var(--accent-clr); 
+  background-color: var(--accent-clr);
 }
 .card:hover {
   transform: translateY(-10px);
@@ -178,17 +211,14 @@ button {
 }
 
 .timeline-item h3 {
-  color: #3498db;
   margin-bottom: 10px;
 }
 
 .timeline-item h4 {
-  color: #7f8c8d;
   margin-bottom: 15px;
 }
 
 .timeline-item p {
-  color: #666;
   line-height: 1.6;
 }
 
@@ -215,6 +245,8 @@ button {
 }
 
 .experience {
+  display: flex;
+  flex-wrap: wrap;
   padding: 30px;
   margin: 30px 0;
   border-radius: 15px;
@@ -308,55 +340,119 @@ h1 {
 }
 /* Loading indicator */
 .loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, transparent, var(--accent-clr), transparent);
-    animation: loading 1s infinite;
-    z-index: 9999;
-    display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-clr),
+    transparent
+  );
+  animation: loading 1s infinite;
+  z-index: 9999;
+  display: none;
 }
 
 @keyframes loading {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Show loading when active */
 .loading.active {
-    display: block;
+  display: block;
 }
 
 .error-container {
-    text-align: center;
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 600px;
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
 }
 
 .error-container h1 {
-    color: #dc3545;
-    margin-bottom: 1rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
 }
 
 .error-details {
-    color: #6c757d;
-    margin: 1rem 0;
+  color: #6c757d;
+  margin: 1rem 0;
 }
 
 .home-link {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .home-link:hover {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
+}
+.img-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin: 0.2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
+.img {
+  padding: 20px;
+  width: 100%;
+  object-fit: cover;
+}
+.workplace {
+  flex-direction: row;
+  flex: 1 0 100px;
+  margin: 0.5rem 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 430px) and (max-width: 768px) {
+  main {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+  .img-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+  }
+  .img {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+@media screen and (max-width: 1380px) {
+  .card {
+    /*The box starts at 100px. It grows dynamically up to 50vw. It stops growing at 500px.*/
+    width: clamp(100px, 50vw, 500px);
+    display: block;
+    max-height: fit-content;
+    transition: box-shadow 0.3s ease;
+    margin: 1rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    transition: all;
+    width: 100%;
+  }
 }
